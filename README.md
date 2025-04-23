@@ -15,3 +15,9 @@
 5. 在本项目中大量使用了池化设计，实现了数据库连接池，grpc连接池，iocontext连接池，充分利用现代CPU的多核优势；
 
 ## 项目展示
+![登录界面](ShowPics/登录界面.png)
+![注册界面](ShowPics/注册界面.png)
+![聊天界面](ShowPics/chat.png)
+![好友界面](ShowPics/friend.png)
+![数据库格式界面](ShowPics/mysql_data.png)
+![验证码服务器](ShowPics/VerifyServer.png)
