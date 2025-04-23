@@ -26,9 +26,8 @@
 4. StatusServer: 状态服务器，记录了每个ChatServer的位置，同时会在每一个用户发生登录操作的时候，给每个用户生成一个唯一的token。StatusServer还会查询每个ChatServer的负载情况，每当用户登录时，分配到压力最小的ChatServer；
 5. ChatServer: 聊天服务器，客户端获得了ChatServer的位置之后，会之间和某一个ChatServer建立tcp长连接，[消息格式定义在这](https://github.com/UnsterblichW/SimpleChatServer/blob/master/ChatServer/ChatServer/MsgNode.h)，如果聊天的双方在同一个ChatServer，那么将直接由ChatServer转发消息，如果聊天的双方在两个不同的ChatServer，那么会由ChatServer直接发起gRPC调用来传递消息。
 
-大致的架构图如下：
-
-
+**大致的架构图如下：**
+![项目架构图](ShowPics/SimpleWeChat.png)
 
 ## 项目展示
 ![登录界面](ShowPics/登录界面.png)
