@@ -28,6 +28,72 @@
 
 **大致的架构图如下：**
 ![项目架构图](ShowPics/SimpleWeChat.png)
+```mermaid
+graph TD
+    WeChat["WeChat系统架构"]
+
+    %% 主要组件
+    Server["服务器集群"]
+    Storage["数据存储"]
+    Client["客户端应用"]
+
+    %% 服务器集群子组件
+    GateServer["GateServer (网关服务器)"]
+    VerifyServer["VerifyServer (验证服务器)"]
+    StatusServer["StatusServer (状态服务器)"]
+    ChatServer["ChatServer (聊天服务器)"]
+
+    %% 数据存储子组件
+    MySQL["MySQL"]
+    Redis["Redis"]
+
+    %% 客户端子组件
+    QtClient["Qt客户端"]
+    Login["登录/注册模块"]
+    ChatUI["聊天界面"]
+    FriendManage["好友管理"]
+    MessageHistory["消息历史查询"]
+
+    %% 服务器功能
+    GateServerFunc["处理HTTP请求，验证码生成，用户注册登录"]
+    VerifyServerFunc["提供身份验证服务，验证码校验"]
+    StatusServerFunc["管理用户状态，ChatServer分配"]
+    ChatServerFunc["处理实时消息，好友管理，聊天历史"]
+
+    %% 数据存储功能
+    MySQLFunc["用户信息，好友关系，消息历史"]
+    RedisFunc["令牌存储，验证码缓存，临时状态"]
+
+    %% 连接关系
+    WeChat --> Server
+    WeChat --> Storage
+    WeChat --> Client
+
+    %% 服务器连接
+    Server --> GateServer
+    Server --> VerifyServer
+    Server --> StatusServer
+    Server --> ChatServer
+
+    GateServer --> GateServerFunc
+    VerifyServer --> VerifyServerFunc
+    StatusServer --> StatusServerFunc
+    ChatServer --> ChatServerFunc
+
+    %% 数据存储连接
+    Storage --> MySQL
+    Storage --> Redis
+    MySQL --> MySQLFunc
+    Redis --> RedisFunc
+
+    %% 客户端连接
+    Client --> QtClient
+    QtClient --> Login
+    QtClient --> ChatUI
+    QtClient --> FriendManage
+    QtClient --> MessageHistory
+```
+
 
 ## 项目展示
 ![登录界面](ShowPics/登录界面.png)
